@@ -16,42 +16,42 @@ closeShopping.addEventListener('click', ()=>{
 let products = [
     {
         id: 1,
-        name: 'Amouge Memoir EDP',
-        image: 'amouge-memoire-edp.jpg',
-        price: 5995
+        name: 'Air Force 1',
+        image: 'airforce.jpg',
+        price: 1499.99
     },
     {
         id: 2,
-        name: 'Creed Aventus',
-        image: 'creed-aventus.jpg',
-        price: 5200
+        name: 'Air Jordan',
+        image: 'airjordan.jpg',
+        price: 2599.99
     },
     {
         id: 3,
-        name: 'Baccarat Rouge 540 (Extrait De Parfum)',
-        image: 'baccarrat-mfk.jpg',
-        price: 8210
+        name: 'Airmax',
+        image: 'airmax.jpg',
+        price: 2399.99
     },
     {
         id: 4,
-        name: 'Concrete EDP',
-        image: 'concrete-edp.jpg',
-        price: 3800
+        name: 'High Dunk',
+        image: 'highdunk.jpg',
+        price: 2799.99
     },
     {
         id: 5,
-        name: 'Oud Satin Mood (Extrait De Parfum)',
-        image: 'oud-satin-mfk.jpg',
-        price: 7725
+        name: 'Low Dunk',
+        image: 'lowdunk.jpg',
+        price: 1999.99
     },
     {
         id: 6,
-        name: 'Uncut Gem EDP',
-        image: 'uncut-gem.jpg',
-        price: 6790
+        name: 'Blaze',
+        image: 'blaze.jpg',
+        price: 2799.99
     }
 ];
-let listCards  = [];
+let listCarts  = [];
 function initApp(){
     products.forEach((value, key) =>{
         let newDiv = document.createElement('div');
@@ -60,16 +60,16 @@ function initApp(){
             <img src="image/${value.image}">
             <div class="title">${value.name}</div>
             <div class="price">${value.price.toLocaleString()}</div>
-            <button onclick="addToCard(${key})">Add To Card</button>`;
+            <button onclick="addToCard(${key})">Add To Cart</button>`;
         list.appendChild(newDiv);
     })
 }
 initApp();
-function addToCard(key){
-    if(listCards[key] == null){
-        // copy product form list to list card
-        listCards[key] = JSON.parse(JSON.stringify(products[key]));
-        listCards[key].quantity = 1;
+function addToCart(key){
+    if(listCarts[key] == null){
+        // copy product form list to list cart
+        listCarts[key] = JSON.parse(JSON.stringify(products[key]));
+        listCarts[key].quantity = 1;
     }
     reloadCard();
 }
@@ -99,10 +99,10 @@ function reloadCard(){
 }
 function changeQuantity(key, quantity){
     if(quantity == 0){
-        delete listCards[key];
+        delete listCarts[key];
     }else{
-        listCards[key].quantity = quantity;
-        listCards[key].price = quantity * products[key].price;
+        listCarts[key].quantity = quantity;
+        listCarts[key].price = quantity * products[key].price;
     }
     reloadCard();
 }
